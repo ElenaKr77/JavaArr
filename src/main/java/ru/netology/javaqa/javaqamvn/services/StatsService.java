@@ -30,23 +30,14 @@ public class StatsService {
     }
 
     public long averageAmountSalesPerMonth(long[] sales) {
-        long amountSales = 0;
-        for (int i = 0; i < sales.length; i++) {
-            amountSales += sales[i];
-        }
-        amountSales = amountSales / sales.length;
-        return amountSales;
+        return findAmountSales(sales) / sales.length;
     }
 
     public int lowerAverage(long[] sales) {
-        long amountSales = 0;
-        for (int i = 0; i < sales.length; i++) {
-            amountSales += sales[i];
-        }
-        amountSales = amountSales / sales.length;
+        long averageSales = averageAmountSalesPerMonth(sales);
         int lowerMonth = 0;
         for (int i = 0; i < sales.length; i++) {
-            if (sales[i] < amountSales) {
+            if (sales[i] < averageSales) {
                 lowerMonth++;
             }
         }
@@ -55,14 +46,10 @@ public class StatsService {
     }
 
     public int higherAverage(long[] sales) {
-        long amountSales = 0;
-        for (int i = 0; i < sales.length; i++) {
-            amountSales += sales[i];
-        }
-        amountSales = amountSales / sales.length;
+        long averageSales = averageAmountSalesPerMonth(sales);
         int higherMonth = 0;
         for (int i = 0; i < sales.length; i++) {
-            if (sales[i] > amountSales) {
+            if (sales[i] > averageSales) {
                 higherMonth++;
             }
         }
